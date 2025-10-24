@@ -1,0 +1,16 @@
+version: 1
+rules:
+  - expected: プロトコル
+    pattern: /プロトコール/
+  - expected: クロージャ
+    pattern: /クロージャー/
+  - expected: プロパティ
+    pattern: /プロパティー/
+  - expected: オプショナル
+    pattern: /オプショナル型/
+  - expected: ジェネリクス
+    pattern: /ジェネリック/
+  - expected: エクステンション
+    pattern: /拡張/
+  - expected: デリゲート
+    pattern: /デリゲートパターン/

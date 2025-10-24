@@ -1,0 +1,22 @@
+{
+  "Argument": "引数",
+  "Array": "配列",
+  "Binary": "2進",
+  "Character": "文字",
+  "Class": "クラス",
+  "Closure": "クロージャ",
+  "Enum": "列挙型",
+  "Error Handling": "エラー処理",
+  "Function": "関数",
+  "Initialization": "初期化",
+  "Method": "メソッド",
+  "Parameter": "パラメータ",
+  "Property": "プロパティ",
+  "Protocol": "プロトコル",
+  "Set": "セット",
+  "String": "文字列",
+  "Struct": "構造体",
+  "Subscript": "サブスクリプト",
+  "Type": "型",
+  "Reference cycle": "循環参照"
+}

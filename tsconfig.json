@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "ES2022",
+      "module": "ESNext",
+      "moduleResolution": "bundler",
+      "outDir": "dist",
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "resolveJsonModule": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "types": ["node", "vscode"],
+      "lib": ["ES2022"],
+      "declaration": true,
+      "declarationMap": true,
+      "sourceMap": true
+    },
+    "include": ["src"]
+  }
+  

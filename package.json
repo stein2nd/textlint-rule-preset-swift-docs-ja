@@ -1,0 +1,63 @@
+{
+  "name": "textlint-rule-preset-swift-docs-ja",
+  "version": "0.0.1",
+  "description": "Swift日本語ドキュメント向けの textlint ルールプリセット",
+  "type": "module",
+  "author": "Koutarou ISHIKAWA",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "textlint",
+    "swift",
+    "docs",
+    "ja",
+    "translation",
+    "vite",
+    "preset",
+    "vscode"
+  ],
+  "main": "dist/preset/index.js",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "extract": "node dist/scripts/extract-terms.js",
+    "watch": "node dist/scripts/watch-terms.js",
+    "lint": "npx textlint --preset ./dist/preset/index.js docs/**/*.md",
+    "vscode:package": "cd dist/vscode && npx vsce package"
+  },
+  "files": [
+    "dist",
+    "dict"
+  ],
+  "overrides": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja/issues"
+  },
+  "homepage": "https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja#readme",
+  "devDependencies": {
+    "@textlint-ja/textlint-rule-no-synonyms": "^1.3.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^24.9.1",
+    "@types/vscode": "^1.105.0",
+    "js-yaml": "^4.1.0",
+    "textlint": "^15.2.3",
+    "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-rule-ja-hiragana-keishikimeishi": "^1.1.0",
+    "textlint-rule-ja-no-abusage": "^3.0.0",
+    "textlint-rule-ja-no-redundant-expression": "^4.0.1",
+    "textlint-rule-ja-space-around-code": "^2.4.2",
+    "textlint-rule-max-kanji-continuous-len": "^1.1.1",
+    "textlint-rule-no-doubled-joshi": "^5.1.1",
+    "textlint-rule-no-dropping-the-ra": "^3.0.0",
+    "textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet": "^1.0.1",
+    "textlint-rule-preset-ja-technical-writing": "^12.0.2",
+    "textlint-rule-prh": "^6.1.0",
+    "textlint-rule-terminology": "^5.2.16",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.12",
+    "vsce": "^2.15.0"
+  }
+}
