@@ -22,3 +22,6 @@ README.dev.md
 
 # GitHub metadata
 .github/
+
+# Explicitly include prh-rules/swift.yml
+!prh-rules/swift.yml
