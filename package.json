@@ -26,7 +26,8 @@
   },
   "files": [
     "dist",
-    "dict"
+    "dict",
+    "prh-rules"
   ],
   "overrides": {},
   "repository": {
