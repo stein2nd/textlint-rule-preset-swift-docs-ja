@@ -1,16 +1,44 @@
 version: 1
 rules:
-  - expected: プロトコル
-    pattern: /プロトコール/
-  - expected: クロージャ
-    pattern: /クロージャー/
-  - expected: プロパティ
-    pattern: /プロパティー/
-  - expected: オプショナル
-    pattern: /オプショナル型/
-  - expected: ジェネリクス
-    pattern: /ジェネリック/
+  - expected: "AppDelegate"
+    patterns: ["App Delegate"]
+  - expected: "AppKit"
+    patterns: ["App Kit"]
+  - expected: "Auto Layout"
+    patterns: ["AutoLayout", "Auto-Layout"]
+  - expected: "Interface Builder"
+    patterns: ["InterfaceBuilder"]
+  - expected: "Modifier"
+    patterns: ["modifier"]
+  - expected: "SceneDelegate"
+    patterns: ["Scene Delegate"]
+  - expected: "Scheme"
+    patterns: ["scheme"]
+  - expected: "Simulator"
+    patterns: ["simulator"]
+  - expected: "Storyboard"
+    patterns: ["Story Board"]
+  - expected: "SwiftUI"
+    patterns: ["Swift UI", "swiftui"]
+  - expected: "Target"
+    patterns: ["target"]
+  - expected: "UIKit"
+    patterns: ["UI Kit"]
+  - expected: "View"
+    patterns: ["view"]
+  - expected: "Xcode"
+    patterns: ["xcode", "XCode"]
   - expected: エクステンション
     pattern: /拡張/
+  - expected: オプショナル
+    pattern: /オプショナル型/
+  - expected: クロージャ
+    pattern: /クロージャー/
+  - expected: ジェネリクス
+    pattern: /ジェネリック/
   - expected: デリゲート
     pattern: /デリゲートパターン/
+  - expected: プロトコル
+    pattern: /プロトコール/
+  - expected: プロパティ
+    pattern: /プロパティー/
