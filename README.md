@@ -2,11 +2,11 @@
 
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 [![textlint](https://img.shields.io/badge/textlint-15.2.3-green.svg)](https://textlint.org/)
-[![Vite](https://img.shields.io/badge/vite-7.1-blue.svg)](https://vite.dev)
+[![Vite](https://img.shields.io/badge/vite-7.2-blue.svg)](https://vite.dev)
 
-📝 **Swift 日本語ドキュメント向けの textlint ルールプリセット**
+## 📝 Description
 
-Swift/SwiftUI の日本語ドキュメント作成時に、一貫した用語使用と日本語表現の品質を保つための textlint ルールプリセットです。
+**Swift 日本語ドキュメント向けの textlint ルールプリセット** は、Swift/SwiftUI の日本語ドキュメント作成時に、一貫した用語使用と日本語表現の品質を保つための textlint ルールプリセットです。
 
 ## 🚀 機能概要
 
@@ -18,15 +18,23 @@ Swift/SwiftUI の日本語ドキュメント作成時に、一貫した用語使
 | 💡 **VSCode 拡張** | 翻訳中の英単語に対して訳語をホバー表示 |
 | ⚡ **Vite + TypeScript 構成** | 高速ビルドと型安全なスクリプト管理 |
 
+## ⚖️ License
+
+本プロジェクトは GPL2.0以降ライセンスの下で提供されています。詳細は [LICENSE](LICENSE) ファイルを参照してください。
+
+## Support and Contact
+
+サポート、機能リクエスト、またはバグ報告については、[GitHub Issues](https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja/issues) ページをご覧ください。
+
 ---
 
-## 📦 インストール
+## 📦 Installation
 
 ```zsh
 npm install --save-dev textlint-rule-preset-swift-docs-ja
 ```
 
-## ⚙️ 基本的な使い方
+## ⚙️ Usage
 
 ### 1. 設定ファイルの作成
 
@@ -171,7 +179,7 @@ cd dist/vscode
 code --extensionDevelopmentPath=$(pwd)
 ```
 
-## 🛠️ 開発者向け情報
+## 🛠️ Development
 
 ### ビルド
 
@@ -190,9 +198,54 @@ npm run build
 | `dict/` | 生成された用語辞書 |
 | `prh-rules/` | PRH ルール定義ファイル |
 
-## ⚖️ ライセンス
+## Contributing
 
-本プロジェクトは GPL2.0以降ライセンスの下で提供されています。詳細は [LICENSE](LICENSE) ファイルを参照してください。
+貢献をお待ちしています ! 以下の手順に従ってください:
+
+1. リポジトリをフォークしてください。
+2. 機能ブランチを作成してください (`git checkout -b feature/amazing-feature`)。
+3. 変更をコミットしてください (`git commit -m 'Add some amazing feature'`)。
+4. 機能ブランチにプッシュしてください (`git push origin feature/amazing-feature`)。
+5. Pull Request を開いてください。
+
+### 開発ガイドライン
+
+#### textlint ルールの追加
+
+* 新しい textlint ルールを追加する場合は、`src/preset/index.ts` の `rules` セクションに追加してください。
+* ルールの設定は、既存のルールの形式に従ってください。
+* ルールを追加したら、`npm run build` でビルドし、動作確認を行ってください。
+
+#### 用語辞書の更新
+
+* **プロジェクト固有の用語** を追加する場合は、`glossary.md` に用語表の形式で追加してください。
+* 用語を追加したら、`npm run extract` を実行して `dict/terminology.json` を再生成してください。
+* **Swift 共通の用語統一** を追加する場合は、`prh-rules/swift.yml` に追加してください。
+* PRH ルールと Terminology の重複を避け、用語の分類を明確にしてください (Swift 共通は PRH、プロジェクト固有は Terminology)。
+
+#### コードスタイル
+
+* TypeScript の型定義を適切に使用してください。
+* 既存のコードスタイル (インデント、命名規則など) に従ってください。
+* スクリプト (`src/scripts/`) や VSCode 拡張 (`src/vscode/`) を変更する場合は、TypeScript の型安全性を保つようにしてください。
+
+#### ビルドとテスト
+
+* 変更を加えたら、`npm run build` でビルドが正常に完了することを確認してください。
+* 実際の Markdown ファイルに対して `npm run lint` を実行し、ルールが正しく動作することを確認してください。
+* VSCode 拡張を変更した場合は、開発モードで動作確認を行ってください。
+
+#### ドキュメントの更新
+
+* 新しいルールや機能を追加した場合は、`README.md` の「📋 含まれるルール」セクションを更新してください。
+* 用語辞書の更新方法や設定方法が変更された場合は、該当するセクションを更新してください。
+* `glossary.md` や `prh-rules/swift.yml` を更新した場合は、変更内容が明確になるようにコメントを追加してください。
+
+## Contributors & Developers
+
+**"textlint-rule-preset-swift-docs-ja"** はオープンソース・ソフトウェアです。以下の皆様がこのプロジェクトに貢献しています。
+
+* **開発者**: Koutarou ISHIKAWA
 
 ---
 
