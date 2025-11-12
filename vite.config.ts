@@ -10,7 +10,7 @@ export default defineConfig({
     emptyOutDir: true,
     lib: {
       entry: {
-        "preset/index": resolve(__dirname, "src/preset/index.ts"),
+        "index": resolve(__dirname, "src/preset/index.ts"),
         "scripts/extract-terms": resolve(__dirname, "src/scripts/extract-terms.ts"),
         "scripts/watch-terms": resolve(__dirname, "src/scripts/watch-terms.ts"),
         "vscode/extension": resolve(__dirname, "src/vscode/extension.ts")
