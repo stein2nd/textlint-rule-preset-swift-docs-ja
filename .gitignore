@@ -8,7 +8,7 @@ yarn-error.log*
 ! dist/
 .vite/
 *.tsbuildinfo
-index.js
+! index.js
 
 # Logs
 logs/
