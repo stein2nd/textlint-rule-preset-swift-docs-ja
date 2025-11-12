@@ -8,6 +8,7 @@ export default defineConfig({
   build: {
     outDir: "dist",
     emptyOutDir: true,
+    target: "node18",
     lib: {
       entry: {
         "index": resolve(__dirname, "src/preset/index.ts"),
@@ -18,7 +19,7 @@ export default defineConfig({
       formats: ["es"]
     },
     rollupOptions: {
-      external: ["vscode", "fs", "path", "child_process"]
+      external: ["vscode", "fs", "path", "child_process", "url"]
     }
   }
 });
