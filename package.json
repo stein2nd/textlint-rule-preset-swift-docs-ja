@@ -16,17 +16,17 @@
     "preset",
     "vscode"
   ],
-  "main": "index.js",
+  "main": "index.cjs",
   "scripts": {
-    "build": "vite build && cp dist/index.js index.js",
+    "build": "vite build && cp dist/index.cjs index.cjs",
     "dev": "vite build --watch",
     "extract": "node dist/scripts/extract-terms.js",
     "watch": "node dist/scripts/watch-terms.js",
-    "lint": "npx textlint --preset ./index.js docs/**/*.md",
+    "lint": "npx textlint --preset ./index.cjs docs/**/*.md",
     "vscode:package": "cd dist/vscode && npx vsce package"
   },
   "files": [
-    "index.js",
+    "index.cjs",
     "dist",
     "dict",
     "prh-rules"

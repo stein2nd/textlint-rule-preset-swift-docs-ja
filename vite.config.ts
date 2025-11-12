@@ -16,7 +16,7 @@ export default defineConfig({
         "scripts/watch-terms": resolve(__dirname, "src/scripts/watch-terms.ts"),
         "vscode/extension": resolve(__dirname, "src/vscode/extension.ts")
       },
-      formats: ["es"]
+      formats: ["cjs", "es"]
     },
     rollupOptions: {
       external: ["vscode", "fs", "path", "child_process", "url"]

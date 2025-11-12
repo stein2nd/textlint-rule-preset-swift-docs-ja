@@ -2,7 +2,12 @@ import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+let __dirname = dirname(__filename);
+// index.cjs がルートディレクトリにコピーされることを考慮
+// dist/index.cjs の場合は親ディレクトリ（ルート）を指すようにする
+if (__dirname.endsWith("/dist") || __dirname.endsWith("\\dist")) {
+  __dirname = dirname(__dirname);
+}
 
 export default {
   rules: {

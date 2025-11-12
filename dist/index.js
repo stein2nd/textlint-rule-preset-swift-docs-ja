@@ -1,6 +1,9 @@
-import { fileURLToPath as r } from "url";
-import { dirname as o, resolve as e } from "path";
-const a = r(import.meta.url), t = o(a), n = {
+import { fileURLToPath as i } from "url";
+import { dirname as r, resolve as t } from "path";
+const a = i(import.meta.url);
+let e = r(a);
+(e.endsWith("/dist") || e.endsWith("\\dist")) && (e = r(e));
+const s = {
   rules: {
     "preset-ja-technical-writing": !0,
     terminology: !0,
@@ -17,7 +20,7 @@ const a = r(import.meta.url), t = o(a), n = {
     // https://github.com/textlint-ja/textlint-rule-terminology
     terminology: {
       defaultTerms: !1,
-      terms: e(t, "./dict/terminology.json")
+      terms: t(e, "./dict/terminology.json")
     },
     // 助詞の重複をチェック
     // https://github.com/textlint-ja/textlint-rule-no-doubled-joshi
@@ -31,7 +34,7 @@ const a = r(import.meta.url), t = o(a), n = {
     // ymlファイルをもとに表記をチェックする
     // https://github.com/textlint-rule/textlint-rule-prh
     prh: {
-      rulePaths: [e(t, "./prh-rules/swift.yml")]
+      rulePaths: [t(e, "./prh-rules/swift.yml")]
     }
   },
   filters: {
@@ -42,5 +45,5 @@ const a = r(import.meta.url), t = o(a), n = {
   }
 };
 export {
-  n as default
+  s as default
 };
