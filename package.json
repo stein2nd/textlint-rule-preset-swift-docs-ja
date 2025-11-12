@@ -17,6 +17,12 @@
     "vscode"
   ],
   "main": "index.cjs",
+  "exports": {
+    ".": {
+      "require": "./index.cjs",
+      "import": "./dist/index.js"
+    }
+  },
   "scripts": {
     "build": "vite build && cp dist/index.cjs index.cjs",
     "dev": "vite build --watch",
