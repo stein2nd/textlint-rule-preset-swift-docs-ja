@@ -19,11 +19,10 @@ export default {
     "no-dropping-the-ra": require("textlint-rule-no-dropping-the-ra").default,
     "no-mixed-zenkaku-and-hankaku-alphabet": require("textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet"),
     "ja-space-around-code": require("textlint-rule-ja-space-around-code"),
-    "no-doubled-joshi": require("@textlint-ja/textlint-rule-no-doubled-joshi").default,
-    "ja-space-between-half-and-full-width": require("textlint-rule-ja-space-between-half-and-full-width").default,
+    "no-doubled-joshi": require("textlint-rule-no-doubled-joshi").default,
+    "ja-space-between-half-and-full-width": require("textlint-rule-ja-space-between-half-and-full-width"),
     "terminology": require("textlint-rule-terminology").default,
     "prh": require("textlint-rule-prh").default,
-    "comments": require("textlint-filter-rule-comments").default,
   },
   rulesConfig: {
     // 文章中の同義語の表記ゆれをチェックする
