@@ -54,7 +54,7 @@ export default {
     "no-doubled-joshi": true,
     // 半角・全角文字間のスペースをチェック
     // https://github.com/textlint-ja/textlint-rule-ja-space-between-half-and-full-width
-    "ja-space-between-half-and-full-width": true,
+    "ja-space-between-half-and-full-width": false,
     // 用語統一ルール
     // https://github.com/textlint-ja/textlint-rule-terminology
     terminology: {
