@@ -70,19 +70,27 @@ npx textlint --fix docs/**/*.md
 
 ### 日本語表現のルール
 
-* **`preset-ja-technical-writing`** - 技術文書向けの日本語表現ルール
-* **`no-doubled-joshi`** - 助詞の重複をチェック
-* **`ja-no-abusage`** - 日本語の誤用をチェック
-* **`ja-space-between-half-and-full-width`** - 半角・全角文字間のスペースをチェック
+* **`textlint-rule-no-synonyms`** - 文章中の同義語の表記ゆれをチェック
+* **`textlint-rule-ja-hiragana-keishikimeishi`** - ひらがなで表記したほうが読みやすい形式名詞をチェック
+* **`textlint-rule-ja-no-abusage`** - よくある日本語の誤用をチェック
+* **`textlint-rule-ja-no-redundant-expression`** - 冗長な表現を禁止
+* **`textlint-rule-max-kanji-continuous-len`** - 漢字が連続する最大文字数を制限する (最大7文字)
+* **`textlint-rule-no-dropping-the-ra`** - 「ら抜き言葉」を検出
+* **`textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet`** - 全角と半角アルファベットの混在をチェック
+* **`textlint-rule-ja-space-around-code`** - インラインコードの前後にスペースを入れる
+* **`textlint-rule-no-doubled-joshi`** - 助詞の重複をチェック
+* **`textlint-rule-ja-space-between-half-and-full-width`** - 半角・全角文字間のスペースをチェック
 
 ### 用語統一ルール
 
-* **`terminology`** - 用語統一ルール (`dict/terminology.json` から読み込み)
-* **`prh`** - PRH ルール (`prh-rules/swift.yml` から読み込み)
+* **`textlint-rule-terminology`** - 用語統一ルール (`dict/terminology.json` から読み込み)
+* **`textlint-rule-prh`** - ymlファイルをもとに表記をチェック (`prh-rules/swift.yml` から読み込み)
 
 ### 除外設定
 
-* **コメント部分** - `<!-- -->` で囲まれた部分は除外
+* **`textlint-filter-rule-comments`** - コメント部分を除外する
+
+* **コメント部分** - `<!-- textlint-disable -->` と `<!-- textlint-enable -->` で囲まれた部分は除外
 * **コードブロック** - Swift コードは除外 (翻訳対象外)
 
 ## 🧠 用語辞書の設定
