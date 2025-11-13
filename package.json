@@ -1,6 +1,6 @@
 {
   "name": "textlint-rule-preset-swift-docs-ja",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Swift日本語ドキュメント向けの textlint ルールプリセット",
   "type": "module",
   "author": "Koutarou ISHIKAWA",
@@ -37,9 +37,6 @@
     "dict",
     "prh-rules"
   ],
-  "overrides": {
-    "rollup": "^4.53.2"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja.git"
@@ -48,6 +45,9 @@
     "url": "https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja/issues"
   },
   "homepage": "https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja#readme",
+  "overrides": {
+    "rollup": "^4.53.2"
+  },
   "devDependencies": {
     "@textlint-ja/textlint-rule-no-synonyms": "^1.3.0",
     "@textlint/kernel": "^15.3.0",
