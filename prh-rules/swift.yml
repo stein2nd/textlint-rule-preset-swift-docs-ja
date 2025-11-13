@@ -9,7 +9,9 @@ rules:
   - expected: "AppKit"
     patterns: ["App Kit"]
   - expected: "Auto Layout"
-    patterns: ["AutoLayout", "Auto-Layout"]
+    patterns: ["AutoLayout"]
+  - expected: "Auto Layout"
+    pattern: /Auto[- ]Layout/
   - expected: "Interface Builder"
     patterns: ["InterfaceBuilder"]
   - expected: "Modifier"
