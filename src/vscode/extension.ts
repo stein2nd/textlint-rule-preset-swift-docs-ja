@@ -40,7 +40,10 @@ let unifiedDictionary: Record<string, string> = {};
  * @returns PRH ルールの辞書
  */
 function loadPRHRules(context: vscode.ExtensionContext): Record<string, string> {
-  const prhPath = path.join(context.extensionPath, "..", "prh-rules", "swift.yml");
+  // まず拡張機能ディレクトリ内を確認し、なければ親ディレクトリを確認
+  const prhPath = fs.existsSync(path.join(context.extensionPath, "prh-rules", "swift.yml"))
+    ? path.join(context.extensionPath, "prh-rules", "swift.yml")
+    : path.join(context.extensionPath, "..", "prh-rules", "swift.yml");
   const prhDict: Record<string, string> = {};
   
   if (fs.existsSync(prhPath)) {
@@ -75,7 +78,10 @@ function loadPRHRules(context: vscode.ExtensionContext): Record<string, string> 
  * @returns 用語集の辞書
  */
 function loadTerminology(context: vscode.ExtensionContext): Record<string, string> {
-  const dictPath = path.join(context.extensionPath, "..", "dict", "terminology.json");
+  // まず拡張機能ディレクトリ内を確認し、なければ親ディレクトリを確認
+  const dictPath = fs.existsSync(path.join(context.extensionPath, "dict", "terminology.json"))
+    ? path.join(context.extensionPath, "dict", "terminology.json")
+    : path.join(context.extensionPath, "..", "dict", "terminology.json");
   let termDict: Record<string, string> = {};
   
   if (fs.existsSync(dictPath)) {

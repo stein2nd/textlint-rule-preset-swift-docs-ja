@@ -1,0 +1,38 @@
+{
+  "name": "textlint-rule-preset-swift-docs-ja",
+  "displayName": "Swift Docs JA - Textlint Rule Preset",
+  "description": "Swift日本語ドキュメント向けの textlint ルールプリセット",
+  "version": "0.0.5",
+  "publisher": "stein2nd",
+  "engines": {
+    "vscode": "^1.106.0"
+  },
+  "categories": [
+    "Linters"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "main": "./extension.cjs",
+  "dependencies": {
+    "js-yaml": "^4.1.1"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "swiftDocsJA.reloadTerminology",
+        "title": "Reload Unified Dictionary"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja/issues"
+  },
+  "homepage": "https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja#readme",
+  "license": "GPL-2.0-or-later"
+}
+

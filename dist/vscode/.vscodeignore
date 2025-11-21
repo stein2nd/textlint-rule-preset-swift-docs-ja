@@ -1,0 +1,18 @@
+# ES モジュール形式のファイル（CommonJS のみ使用）
+extension.js
+
+# パッケージ管理ファイル
+package-lock.json
+
+# node_modules 内の不要なファイル
+node_modules/**/*.md
+node_modules/**/CHANGELOG.md
+node_modules/**/LICENSE
+node_modules/**/README.md
+node_modules/**/test/
+node_modules/**/tests/
+node_modules/**/*.test.js
+node_modules/**/*.spec.js
+
+# ビルド成果物（既にパッケージされている）
+*.vsix
