@@ -1,7 +1,7 @@
-# textlint-rule-preset-swift-docs-ja
+# Textlint Rule Preset for Swift Docs (ja)
 
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
-[![textlint](https://img.shields.io/badge/textlint-15.3-blue.svg)](https://textlint.org/)
+[![textlint](https://img.shields.io/badge/textlint-15.4-blue.svg)](https://textlint.org/)
 [![Vite](https://img.shields.io/badge/vite-7.2-blue.svg)](https://vite.dev)
 
 ## 📝 Description
@@ -186,6 +186,22 @@ npm run watch
 cd dist/vscode
 code --extensionDevelopmentPath=$(pwd)
 ```
+
+### パッケージング
+
+VSCode 拡張機能を `.vsix` ファイルとしてパッケージングするには、以下のコマンドを実行します。
+
+```zsh
+npm run build
+npm run vscode:package
+```
+
+これにより、`dist/vscode/textlint-rule-preset-swift-docs-ja-{version}.vsix` が生成されます。
+
+**注意：**
+* ビルドプロセスで、必要なファイル (`package.json`、`prh-rules`、`dict`、`LICENSE`、`.vscodeignore`) が自動的に `dist/vscode/` にコピーされます
+* パッケージング前に、依存関係 (`js-yaml`) が自動的にインストールされます
+* 生成された `.vsix` ファイルは、VSCode の拡張機能としてインストールできます
 
 ## 🛠️ Development
 
