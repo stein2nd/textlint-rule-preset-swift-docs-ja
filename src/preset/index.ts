@@ -23,6 +23,8 @@ export default {
     "ja-space-between-half-and-full-width": require("textlint-rule-ja-space-between-half-and-full-width"),
     "terminology": require("textlint-rule-terminology").default,
     "prh": require("textlint-rule-prh").default,
+    // preset-name/rule-name 形式で参照できるようにする
+    "swift-docs-ja/prh": require("textlint-rule-prh").default,
   },
   rulesConfig: {
     // 文章中の同義語の表記ゆれをチェックする
@@ -64,6 +66,10 @@ export default {
     // ymlファイルをもとに表記をチェックする
     // https://github.com/textlint-rule/textlint-rule-prh
     prh: {
+      rulePaths: [resolve(__dirname, "./prh-rules/swift.yml")],
+    },
+    // preset-name/rule-name 形式で参照できるようにする
+    "swift-docs-ja/prh": {
       rulePaths: [resolve(__dirname, "./prh-rules/swift.yml")],
     },
     // 「<!-- textlint-disable -->」と「<!-- textlint-enable -->」に挟まれたコメント部分を除外する
