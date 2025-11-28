@@ -1,6 +1,6 @@
 {
   "name": "textlint-rule-preset-swift-docs-ja",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Swift日本語ドキュメント向けの textlint ルールプリセット",
   "type": "module",
   "author": "Koutarou ISHIKAWA",
@@ -28,7 +28,7 @@
     "dev": "vite build --watch",
     "extract": "node dist/scripts/extract-terms.js",
     "watch": "node dist/scripts/watch-terms.js",
-    "lint": "npx textlint --preset ./index.cjs docs/**/*.md",
+    "lint": "echo 'Note: This preset project does not include test documents. To test the preset, install it in another project and use it there.'",
     "vscode:package": "cd dist/vscode && npm install --production && npx vsce package"
   },
   "files": [
@@ -64,6 +64,7 @@
     "textlint-rule-ja-no-abusage": "^3.0.0",
     "textlint-rule-ja-no-redundant-expression": "^4.0.1",
     "textlint-rule-ja-space-around-code": "^2.4.2",
+    "textlint-rule-ja-space-between-half-and-full-width": "^1.0.0",
     "textlint-rule-max-kanji-continuous-len": "^1.1.1",
     "textlint-rule-no-doubled-joshi": "^5.1.1",
     "textlint-rule-no-dropping-the-ra": "^3.0.0",
