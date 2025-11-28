@@ -1,8 +1,8 @@
 import { fileURLToPath as t } from "url";
-import { dirname as a, resolve as r } from "path";
+import { dirname as r, resolve as a } from "path";
 const i = t(import.meta.url);
-let e = a(i);
-(e.endsWith("/dist") || e.endsWith("\\dist")) && (e = a(e));
+let e = r(i);
+(e.endsWith("/dist") || e.endsWith("\\dist")) && (e = r(e));
 const o = {
   rules: {
     "@textlint-ja/no-synonyms": require("@textlint-ja/textlint-rule-no-synonyms").default,
@@ -18,6 +18,7 @@ const o = {
     terminology: require("textlint-rule-terminology").default,
     prh: require("textlint-rule-prh").default,
     // preset-name/rule-name 形式で参照できるようにする
+    // 外部の設定ファイルで個別に設定を上書きできるようにするため
     "swift-docs-ja/prh": require("textlint-rule-prh").default
   },
   rulesConfig: {
@@ -55,16 +56,12 @@ const o = {
     // https://github.com/textlint-ja/textlint-rule-terminology
     terminology: {
       defaultTerms: !1,
-      terms: r(e, "./dict/terminology.json")
+      terms: a(e, "./dict/terminology.json")
     },
     // ymlファイルをもとに表記をチェックする
     // https://github.com/textlint-rule/textlint-rule-prh
     prh: {
-      rulePaths: [r(e, "./prh-rules/swift.yml")]
-    },
-    // preset-name/rule-name 形式で参照できるようにする
-    "swift-docs-ja/prh": {
-      rulePaths: [r(e, "./prh-rules/swift.yml")]
+      rulePaths: [a(e, "./prh-rules/swift.yml")]
     },
     // 「<!-- textlint-disable -->」と「<!-- textlint-enable -->」に挟まれたコメント部分を除外する
     // https://github.com/textlint-filter-rule-comments

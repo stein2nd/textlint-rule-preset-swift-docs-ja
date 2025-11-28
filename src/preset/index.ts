@@ -24,6 +24,7 @@ export default {
     "terminology": require("textlint-rule-terminology").default,
     "prh": require("textlint-rule-prh").default,
     // preset-name/rule-name 形式で参照できるようにする
+    // 外部の設定ファイルで個別に設定を上書きできるようにするため
     "swift-docs-ja/prh": require("textlint-rule-prh").default,
   },
   rulesConfig: {
@@ -66,10 +67,6 @@ export default {
     // ymlファイルをもとに表記をチェックする
     // https://github.com/textlint-rule/textlint-rule-prh
     prh: {
-      rulePaths: [resolve(__dirname, "./prh-rules/swift.yml")],
-    },
-    // preset-name/rule-name 形式で参照できるようにする
-    "swift-docs-ja/prh": {
       rulePaths: [resolve(__dirname, "./prh-rules/swift.yml")],
     },
     // 「<!-- textlint-disable -->」と「<!-- textlint-enable -->」に挟まれたコメント部分を除外する
