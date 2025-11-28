@@ -64,6 +64,49 @@ npx textlint README.md
 npx textlint --fix docs/**/*.md
 ```
 
+### 4. 個別ルールの設定
+
+プリセット内の特定のルールに対して、個別に設定を上書きすることができます。以下の2つの方法があります。
+
+#### 方法1: preset内でルールを個別に設定する
+
+プリセット名の下にルール名をネストして設定する方法です。この方法では、`swift-docs-ja/prh` を `false` に設定して重複起動を防ぐ必要があります：
+
+```json
+{
+  "rules": {
+    "preset-swift-docs-ja": {
+      "prh": {
+        "rulePaths": [
+          "../node_modules/textlint-rule-preset-swift-docs-ja/prh-rules/swift.yml"
+        ],
+        "severity": "warning"
+      },
+      "swift-docs-ja/prh": false
+    }
+  }
+}
+```
+
+#### 方法2: preset-name/rule-name 形式で個別に設定する
+
+`preset-name/rule-name` 形式で直接ルールを参照する方法です：
+
+```json
+{
+  "rules": {
+    "preset-swift-docs-ja": true,
+    "swift-docs-ja/prh": {
+      "severity": "warning"
+    }
+  }
+}
+```
+
+**注意：** 方法1と方法2を同時に使用すると、同じルールが重複して実行される可能性があります。どちらか一方の方法を選択してください。
+
+どちらの方法でも、`prh` ルールの違反が警告として報告されるようになります。他のルールに対しても同様の方法で個別に設定できます。
+
 ## 📋 含まれるルール
 
 このプリセットには、以下のルールが含まれています。
@@ -85,6 +128,7 @@ npx textlint --fix docs/**/*.md
 
 * **`textlint-rule-terminology`** - 用語統一ルール (`dict/terminology.json` から読み込み)
 * **`textlint-rule-prh`** - ymlファイルをもとに表記をチェック (`prh-rules/swift.yml` から読み込み)
+  * `swift-docs-ja/prh` 形式で個別に参照・設定可能
 
 ### 除外設定
 
