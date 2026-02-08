@@ -53,7 +53,7 @@
     "@textlint/kernel": "^15.5.1",
     "@textlint/textlint-plugin-markdown": "^15.5.1",
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "^25.2.1",
+    "@types/node": "^25.2.2",
     "@types/vscode": "^1.109.0",
     "@vscode/vsce": "^3.7.1",
     "js-yaml": "^4.1.1",
