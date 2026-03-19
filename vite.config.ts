@@ -25,8 +25,11 @@ export default defineConfig({
         if (id === "vscode" || id.startsWith("node:")) {
           return true;
         }
-        // 組み込みモジュールを外部化
-        const builtins = ["fs", "path", "child_process", "url"];
+        // 組み込みモジュールを外部化 (Node 向けビルドのため、明示指定でログを抑止)
+        const builtins = [
+          "fs", "path", "child_process", "url",
+          "assert", "os"  // 依存パッケージが参照する Node 組み込み
+        ];
         if (builtins.includes(id)) {
           return true;
         }
