@@ -2,7 +2,7 @@
 
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 [![textlint](https://img.shields.io/badge/textlint-15.5-blue.svg)](https://textlint.org/)
-[![Vite](https://img.shields.io/badge/vite-7.3-blue.svg)](https://vite.dev)
+[![Vite](https://img.shields.io/badge/vite-8.0-blue.svg)](https://vite.dev)
 
 ## 📝 Description
 
