@@ -256,6 +256,65 @@ npm install
 npm run build
 ```
 
+### `package.json` scripts の使い分け
+
+| script | 用途 | 実行タイミング |
+|---|---|---|
+| `npm run build` | ライブラリ本体・補助スクリプト・VSCode 拡張を `dist/` にビルドし、`index.cjs` を最新化 | ソース変更後、コミット前、VSCode 拡張のパッケージング前 |
+| `npm run dev` | `vite build --watch` でビルド結果を監視更新 | 開発中に継続実行 |
+| `npm run extract` | `glossary.md` から `dict/terminology.json` を再生成 | 用語表を更新した直後 |
+| `npm run watch` | `glossary.md` 監視 + 辞書の自動再生成 | 用語整理を続ける作業中 |
+| `npm run lint` | このリポジトリ向けの案内メッセージを表示 (実文書 lint は利用側プロジェクトで実施) | リリース前の確認メモ用途 |
+| `npm run vscode:package` | `dist/vscode` の依存を入れて `.vsix` を作成 | VSCode 拡張を配布する時 |
+| `npm run prepack` | パッケージ化直前に `build` を実行して公開物を最新化 (`npm pack` / `npm publish` 時に npm が自動実行) | 通常は手動実行不要 |
+
+### 推奨実行順
+
+通常の変更 (preset / script / vscode 拡張) では、次の順が安全です。
+
+```zsh
+npm install
+npm run build
+```
+
+用語辞書を更新した場合は、次の順を推奨します。
+
+```zsh
+npm install
+npm run extract   # または npm run watch
+npm run build
+```
+
+VSCode 拡張を配布する場合は、最後に以下を実行します。
+
+```zsh
+npm run vscode:package
+```
+
+`npm pack` / `npm publish` では `prepack` により `build` が自動実行されるため、公開直前の取りこぼしを防げます。
+
+### 依存更新時チェックリスト (daily routine / ncu 運用)
+
+※ ここで、ncu とは [npm-check-updates](https://github.com/raineorshine/npm-check-updates) の略記です。
+
+依存関係の定期更新を行うときは、次の手順で進めると差分管理しやすくなります。
+
+1. **作業ツリーを確認する**
+   - 先に未コミット変更を整理し、依存更新の差分と混ざらない状態にします。
+2. **依存関係を更新する**
+   - `ncu` で更新候補を確認し、`ncu -u` で `package.json` を更新します。
+3. **lockfile を再生成する**
+   - `npm install` (必要に応じて `npm install --legacy-peer-deps`) を実行し、`package-lock.json` を最新化します。
+4. **ビルド成果物を更新する**
+   - `npm run build` を実行し、`index.cjs` と `dist/` 配下の成果物を更新します。
+5. **派生物を更新する (必要時のみ)**
+   - 用語更新がある場合は `npm run extract` (または `npm run watch`) を実行します。
+   - VSCode 拡張を配布する場合は `npm run vscode:package` を実行します。
+6. **差分を確認してコミットする**
+   - `package.json` / `package-lock.json` / ビルド成果物の差分が意図どおりか確認してからコミットします。
+
+公開時 (`npm pack` / `npm publish`) は `prepack` が自動で `npm run build` を実行するため、公開物の取りこぼしを防げます。
+
 ### プロジェクト構成
 
 | ディレクトリ | 説明 |
