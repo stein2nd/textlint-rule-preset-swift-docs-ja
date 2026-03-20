@@ -1,6 +1,6 @@
 {
   "name": "textlint-rule-preset-swift-docs-ja",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Swift日本語ドキュメント向けの textlint ルールプリセット",
   "type": "module",
   "author": "Koutarou ISHIKAWA",
@@ -29,6 +29,7 @@
     "extract": "node dist/scripts/extract-terms.js",
     "watch": "node dist/scripts/watch-terms.js",
     "lint": "echo 'Note: This preset project does not include test documents. To test the preset, install it in another project and use it there.'",
+    "prepack": "npm run build",
     "vscode:package": "cd dist/vscode && npm install --production && npx vsce package"
   },
   "files": [
