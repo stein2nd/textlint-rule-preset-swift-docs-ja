@@ -4,11 +4,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Build
-! dist/
+# Build（clone 後は npm run build が必要。npm 配布物は prepack で生成）
+dist/
+index.cjs
+chunk-*.cjs
 .vite/
 *.tsbuildinfo
-! index.js
 
 # Logs
 logs/

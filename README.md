@@ -227,6 +227,7 @@ npm run watch
 ### 開発モードでの使用
 
 ```zsh
+npm run build
 cd dist/vscode
 code --extensionDevelopmentPath=$(pwd)
 ```
@@ -249,6 +250,27 @@ npm run vscode:package
 
 ## 🛠️ Development
 
+### ビルド必須について
+
+本リポジトリでは、**`dist/`、ルートの `index.cjs`、`chunk-*.cjs` は、Git に含めません** (Vite で都度生成します)。
+
+リポジトリを clone した直後や、他ブランチに切り替えたあとは、次を実行してください。
+
+```zsh
+npm install
+npm run build
+```
+
+その後で `npm run extract` / `npm run watch` (`dist/scripts/` を実行) や、VSCode 拡張の開発 (`dist/vscode/`) に進めます。
+
+**npm レジストリから `npm install` する利用者** には影響しません。`npm pack` / `npm publish` 時に `prepack` で `build` が走り、`package.json` の `files` に従って tarball に入ります。
+
+### Vite 8 (Rolldown) の扱い
+
+ビルドは、Vite v8 の [Rolldown](https://rolldown.rs/) 基盤です。ライブラリ向け CJS では、既定の `platform` だと `import.meta.url` が誤って束ねられることがあるため、本リポジトリの `vite.config.ts` では **`rollupOptions.platform: "node"`** を指定しています (`__dirname` 相当のパス解決が壊れないようにするため。背景は [Vite #21974](https://github.com/vitejs/vite/issues/21974) などを参照)。
+
+CJS 出力がコード分割されると、**`./chunk-*.cjs`** が増えます。`package.json` の `main` がルートの `index.cjs` を指す関係で、`npm run build` 内で `dist/` からルートへ同名チャンクもコピーします。チャンクのハッシュはビルドごとに変わり得るため、**成果物を Git で追うのではなく、常にビルドで揃える** 運用にしています。
+
 ### ビルド
 
 ```zsh
@@ -260,7 +282,7 @@ npm run build
 
 | script | 用途 | 実行タイミング |
 |---|---|---|
-| `npm run build` | ライブラリ本体・補助スクリプト・VSCode 拡張を `dist/` にビルドし、`index.cjs` を最新化 | ソース変更後、コミット前、VSCode 拡張のパッケージング前 |
+| `npm run build` | ライブラリ本体、補助スクリプト、VSCode 拡張を `dist/` にビルドし、ルートの `index.cjs` と CJS 用 `chunk-*.cjs` を更新 | ソース変更後、clone 直後、VSCode 拡張のパッケージング前 |
 | `npm run dev` | `vite build --watch` でビルド結果を監視更新 | 開発中に継続実行 |
 | `npm run extract` | `glossary.md` から `dict/terminology.json` を再生成 | 用語表を更新した直後 |
 | `npm run watch` | `glossary.md` 監視 + 辞書の自動再生成 | 用語整理を続ける作業中 |
@@ -300,20 +322,20 @@ npm run vscode:package
 依存関係の定期更新を行うときは、次の手順で進めると差分管理しやすくなります。
 
 1. **作業ツリーを確認する**
-   - 先に未コミット変更を整理し、依存更新の差分と混ざらない状態にします。
+   * 先に未コミット変更を整理し、依存更新の差分と混ざらない状態にします。
 2. **依存関係を更新する**
-   - `ncu` で更新候補を確認し、`ncu -u` で `package.json` を更新します。
+   * `ncu` で更新候補を確認し、`ncu -u` で `package.json` を更新します。
 3. **lockfile を再生成する**
-   - `npm install` (必要に応じて `npm install --legacy-peer-deps`) を実行し、`package-lock.json` を最新化します。
-4. **ビルド成果物を更新する**
-   - `npm run build` を実行し、`index.cjs` と `dist/` 配下の成果物を更新します。
+   * `npm install` (必要に応じて `npm install --legacy-peer-deps`) を実行し、`package-lock.json` を最新化します。
+4. **ビルド確認**
+   * `npm run build` が成功することを確認します (`dist/`、`index.cjs`、`chunk-*.cjs` は `.gitignore` 対象のため、コミットしません)。
 5. **派生物を更新する (必要時のみ)**
-   - 用語更新がある場合は `npm run extract` (または `npm run watch`) を実行します。
-   - VSCode 拡張を配布する場合は `npm run vscode:package` を実行します。
+   * 用語更新がある場合は `npm run extract` (または `npm run watch`) を実行します (事前に `npm run build` が必要です)。
+   * VSCode 拡張を配布する場合は `npm run vscode:package` を実行します。
 6. **差分を確認してコミットする**
-   - `package.json` / `package-lock.json` / ビルド成果物の差分が意図どおりか確認してからコミットします。
+   * `package.json` / `package-lock.json` / ソース、`dict` / `prh-rules` など、意図した差分だけが残っているか確認してからコミットします。
 
-公開時 (`npm pack` / `npm publish`) は `prepack` が自動で `npm run build` を実行するため、公開物の取りこぼしを防げます。
+公開時 (`npm pack` / `npm publish`) は `prepack` が自動で `npm run build` を実行するため、公開 tarball に必要なファイルが揃います。
 
 ### プロジェクト構成
 
@@ -322,6 +344,7 @@ npm run vscode:package
 | `src/preset/` | textlint プリセットの設定 |
 | `src/scripts/` | 用語辞書の生成スクリプト |
 | `src/vscode/` | VSCode 拡張のソース |
+| `dist/` | ビルド出力 (Git 対象外。`npm run build` で生成) |
 | `dict/` | 生成された用語辞書 |
 | `prh-rules/` | PRH ルール定義ファイル |
 

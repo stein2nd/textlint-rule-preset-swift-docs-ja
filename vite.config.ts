@@ -20,6 +20,9 @@ export default defineConfig({
       formats: ["cjs", "es"]
     },
     rollupOptions: {
+      // Lib ビルドは既定で platform が browser になり、CJS 出力で import.meta.url が壊れる。
+      // @see https://github.com/vitejs/vite/issues/21974
+      platform: "node",
       external: (id) => {
         // VSCode拡張機能のビルドでは、vscode と Node.js の組み込みモジュールを外部化
         if (id === "vscode" || id.startsWith("node:")) {

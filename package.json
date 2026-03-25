@@ -24,7 +24,7 @@
     }
   },
   "scripts": {
-    "build": "vite build && cp dist/index.cjs index.cjs",
+    "build": "vite build && cp dist/index.cjs index.cjs && node scripts/copy-root-cjs-chunks.mjs",
     "dev": "vite build --watch",
     "extract": "node dist/scripts/extract-terms.js",
     "watch": "node dist/scripts/watch-terms.js",
@@ -34,6 +34,7 @@
   },
   "files": [
     "index.cjs",
+    "chunk-*.cjs",
     "dist",
     "dict",
     "prh-rules"
