@@ -28,12 +28,18 @@ rules:
     patterns: ["Swift UI", "swiftui"]
   - expected: "Target"
     patterns: ["target"]
+    options:
+      wordBoundary: true
   - expected: "UIKit"
     patterns: ["UI Kit"]
   - expected: "View"
     patterns: ["view"]
+    options:
+      wordBoundary: true
   - expected: "Xcode"
     patterns: ["xcode", "XCode"]
+    options:
+      wordBoundary: true
   - expected: エクステンション
     pattern: /拡張/
   - expected: オプショナル
