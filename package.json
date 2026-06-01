@@ -58,15 +58,15 @@
     "@types/node": "^25.9.1",
     "@types/vscode": "^1.120.0",
     "@vscode/vsce": "^3.9.1",
-    "js-yaml": "^4.1.1",
+    "js-yaml": "^4.2.0",
     "rollup": "^4.60.4",
     "textlint": "^15.7.1",
     "textlint-filter-rule-comments": "^1.3.0",
     "textlint-rule-ja-hiragana-keishikimeishi": "^1.1.0",
     "textlint-rule-ja-no-abusage": "^3.0.0",
     "textlint-rule-ja-no-redundant-expression": "^4.0.1",
-    "textlint-rule-ja-space-around-code": "^2.4.2",
-    "textlint-rule-ja-space-between-half-and-full-width": "^2.4.2",
+    "textlint-rule-ja-space-around-code": "^3.0.0",
+    "textlint-rule-ja-space-between-half-and-full-width": "^3.0.0",
     "textlint-rule-max-kanji-continuous-len": "^1.1.1",
     "textlint-rule-no-doubled-joshi": "^5.1.1",
     "textlint-rule-no-dropping-the-ra": "^3.0.0",
@@ -75,6 +75,6 @@
     "textlint-rule-prh": "^6.1.0",
     "textlint-rule-terminology": "^5.2.16",
     "typescript": "^6.0.3",
-    "vite": "^8.0.14"
+    "vite": "^8.0.15"
   }
 }
