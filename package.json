@@ -1,6 +1,6 @@
 {
   "name": "textlint-rule-preset-swift-docs-ja",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Swift 日本語ドキュメント向けの textlint ルールプリセット",
   "type": "module",
   "author": "Koutarou ISHIKAWA",
@@ -24,7 +24,7 @@
     }
   },
   "scripts": {
-    "build": "vite build && cp dist/index.cjs index.cjs && node scripts/copy-root-cjs-chunks.mjs",
+    "build": "node scripts/sync-vscode-version.mjs && vite build && cp dist/index.cjs index.cjs && node scripts/copy-root-cjs-chunks.mjs",
     "dev": "vite build --watch",
     "extract": "node dist/scripts/extract-terms.js",
     "watch": "node dist/scripts/watch-terms.js",

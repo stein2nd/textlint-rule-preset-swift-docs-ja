@@ -2,7 +2,7 @@
   "name": "textlint-rule-preset-swift-docs-ja",
   "displayName": "Swift Docs JA - Textlint Rule Preset",
   "description": "Swift 日本語ドキュメント向けの textlint ルールプリセット",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "stein2nd",
   "engines": {
     "vscode": "^1.106.0"
@@ -35,4 +35,3 @@
   "homepage": "https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja#readme",
   "license": "GPL-3.0-or-later"
 }
-

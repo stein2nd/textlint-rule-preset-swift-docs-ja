@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## v1.0.2: 2026-06-09
+
+* GitHub Actions の npm publish で Trusted Publisher (OIDC) 認証が正しく使われるよう修正
+* CI の Node.js を24に更新（Trusted Publisher 要件）
+* `setup-node` が書く空の `_authToken` を除去し、OIDC 認証を有効化
+* CI の publish 手順をパッケージルートからの `npm publish` に変更
+* ビルド時に `src/vscode/package.json` のバージョンをルート `package.json` へ同期
+
 ## v1.0.1: 2026-06-09
 
 * npm 公開向けに `pack` / `verify:pack` / `publish:npm` スクリプトを追加（tarball は `artifacts/`、検証は `.sandbox/`）
