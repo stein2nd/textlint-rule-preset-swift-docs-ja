@@ -1,0 +1,48 @@
+# npm Trusted Publisher (GitHub Actions OIDC) で公開する。
+# npmjs.com の Package Settings → Trusted publishing で次を登録すること:
+#   - Repository: stein2nd/textlint-rule-preset-swift-docs-ja
+#   - Workflow filename: npm-publish.yml
+#   - Environment: (未使用なら空)
+# 初回公開前に Trusted Publisher を設定できない場合は、
+# 一度だけ `npm login` による手動 publish が必要。
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Pack tarball to artifacts/
+        run: npm run pack
+
+      - name: Verify tarball in .sandbox/
+        run: npm run verify:pack
+
+      - name: Publish to npm
+        run: npm publish --access public "artifacts/textlint-rule-preset-swift-docs-ja-$(node -p "require('./package.json').version").tgz"
+
+      - name: Upload tarball artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-package
+          path: artifacts/*.tgz

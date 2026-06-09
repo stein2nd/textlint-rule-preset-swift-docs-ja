@@ -1,10 +1,10 @@
 {
   "name": "textlint-rule-preset-swift-docs-ja",
-  "version": "0.0.10",
-  "description": "Swift日本語ドキュメント向けの textlint ルールプリセット",
+  "version": "1.0.1",
+  "description": "Swift 日本語ドキュメント向けの textlint ルールプリセット",
   "type": "module",
   "author": "Koutarou ISHIKAWA",
-  "license": "GPL-2.0-or-later",
+  "license": "GPL-3.0-or-later",
   "keywords": [
     "textlint",
     "textlint-rule",
@@ -30,6 +30,9 @@
     "watch": "node dist/scripts/watch-terms.js",
     "lint": "echo 'Note: This preset project does not include test documents. To test the preset, install it in another project and use it there.'",
     "prepack": "npm run build",
+    "pack": "node scripts/pack-to-artifacts.mjs",
+    "verify:pack": "node scripts/verify-pack.mjs",
+    "publish:npm": "node scripts/publish-to-npm.mjs",
     "vscode:package": "cd dist/vscode && npm install --production && npx vsce package"
   },
   "files": [
@@ -47,6 +50,12 @@
     "url": "https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja/issues"
   },
   "homepage": "https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "textlint": ">=14.0.0"
+  },
   "overrides": {
     "rollup": "^4.61.1"
   },
@@ -55,7 +64,7 @@
     "@textlint/kernel": "^15.7.1",
     "@textlint/textlint-plugin-markdown": "^15.7.1",
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "^25.9.1",
+    "@types/node": "^25.9.2",
     "@types/vscode": "^1.120.0",
     "@vscode/vsce": "^3.9.2",
     "js-yaml": "^4.2.0",

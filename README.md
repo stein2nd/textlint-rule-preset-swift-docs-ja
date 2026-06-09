@@ -1,6 +1,6 @@
 # Textlint Rule Preset for Swift Docs (ja)
 
-[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![textlint](https://img.shields.io/badge/textlint-15.6-blue.svg)](https://textlint.org/)
 [![Vite](https://img.shields.io/badge/vite-8.0-blue.svg)](https://vite.dev)
 [![Rollup](https://img.shields.io/badge/rollup-4.61-blue.svg)](https://rollupjs.org)
@@ -21,7 +21,7 @@
 
 ## ⚖️ License
 
-本プロジェクトは GPL2.0以降ライセンスの下で提供されています。詳細は [LICENSE](LICENSE) ファイルを参照してください。
+本プロジェクトは GPL-3.0以降ライセンスの下で提供されています。詳細は [LICENSE](LICENSE) ファイルを参照してください。
 
 ## Support and Contact
 
