@@ -39,7 +39,7 @@ jobs:
         run: npm run verify:pack
 
       - name: Publish to npm
-        run: npm publish --access public "./artifacts/textlint-rule-preset-swift-docs-ja-$(node -p "require('./package.json').version").tgz"
+        run: npm publish --access public
 
       - name: Upload tarball artifact
         uses: actions/upload-artifact@v4
