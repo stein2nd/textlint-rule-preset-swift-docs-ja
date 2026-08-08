@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+## v1.0.4: 2026-08-08
+
+* 利用 npm モジュールを最新化 (textlint v15.8、Vite v8.2、Rollup v4.62.4 など)
+* README のバッジを更新
+
+## v1.0.3: 2026-07-23
+
+* 利用 npm モジュールを最新化 (TypeScript v7、Vite v8.1、Rollup v4.62、js-yaml v5 など)
+* textlint v15.7 系へ更新
+* README のバッジを更新
+
 ## v1.0.2: 2026-06-09
 
 * GitHub Actions の npm publish で Trusted Publisher (OIDC) 認証が正しく使われるよう修正
