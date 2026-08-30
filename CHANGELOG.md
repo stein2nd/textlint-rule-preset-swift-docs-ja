@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## v1.0.5: 2026-08-31
+
+* 利用 npm モジュールを最新化 (Rollup v4.63.1、js-yaml v5.4.1、Vite v8.2.2など)
+* README のバッジを更新
+
 ## v1.0.4: 2026-08-08
 
 * 利用 npm モジュールを最新化 (textlint v15.8、Vite v8.2、Rollup v4.62.4 など)
