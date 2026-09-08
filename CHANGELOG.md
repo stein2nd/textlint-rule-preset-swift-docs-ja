@@ -4,7 +4,7 @@
 
 ## v1.0.6: 2026-09-09
 
-* 利用 npm モジュールを最新化 (@types/node v26.5.0、@types/vscode v1.136.0 など)
+* 利用 npm モジュールを最新化 (@types/node v26.5.0、@types/vscode v1.136.0など)
 
 ## v1.0.5: 2026-08-31
 
