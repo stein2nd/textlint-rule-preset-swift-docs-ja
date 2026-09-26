@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## v1.0.7: 2026-09-26
+
+* 利用 npm モジュールを最新化 (Vite v8.3.1、@vscode/vsce v4.0.0、@types/node v26.6.3など)
+* README のバッジを更新
+
 ## v1.0.6: 2026-09-09
 
 * 利用 npm モジュールを最新化 (@types/node v26.5.0、@types/vscode v1.136.0など)
