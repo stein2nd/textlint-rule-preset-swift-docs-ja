@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## v1.0.8: 2026-10-02
+
+* 利用 npm モジュールを最新化 (Vite v8.3.2、Rollup v4.63.6、@types/node v26.6.4、@types/vscode v1.140.0など)
+* `package.json` の SchemaStore スキーマを読み込めるよう、`json.schemaDownload.enable` を有効化
+
 ## v1.0.7: 2026-09-26
 
 * 利用 npm モジュールを最新化 (Vite v8.3.1、@vscode/vsce v4.0.0、@types/node v26.6.3など)
