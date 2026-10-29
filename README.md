@@ -3,7 +3,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![textlint](https://img.shields.io/badge/textlint-15.8-blue.svg)](https://textlint.org/)
 [![Vite](https://img.shields.io/badge/vite-8.3-blue.svg)](https://vite.dev)
-[![Rollup](https://img.shields.io/badge/rollup-4.65-blue.svg)](https://rollupjs.org)
+[![Rollup](https://img.shields.io/badge/rollup-4.66-blue.svg)](https://rollupjs.org)
 
 ## 📝 Description
 
