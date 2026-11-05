@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## v1.0.13: 2026-11-05
+
+* 利用 npm モジュールを最新化 (Vite v8.3.6、Rollup v4.67.5、@types/vscode v1.145.0など)
+* README のバッジを更新
+
 ## v1.0.12: 2026-10-29
 
 * 利用 npm モジュールを最新化 (Rollup v4.66.0、@vscode/vsce v4.1.0、@types/node v26.6.6、@types/vscode v1.144.0など)
