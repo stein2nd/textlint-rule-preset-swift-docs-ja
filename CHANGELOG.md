@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v1.0.15: 2026-11-20
+
+* npm publish ワークフローの Actions を v7 系へ更新し、Node.js v20非推奨の Annotation を解消
+
 ## v1.0.14: 2026-11-20
 
 * 利用 npm モジュールを最新化 (textlint v16.1.1、Vite v8.3.8、Rollup v4.68.7、@vscode/vsce v4.1.1、@types/vscode v1.146.0など)
