@@ -1,6 +1,6 @@
 {
   "name": "textlint-rule-preset-swift-docs-ja",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Swift 日本語ドキュメント向けの textlint ルールプリセット",
   "type": "module",
   "author": "Koutarou ISHIKAWA",
@@ -51,6 +51,9 @@
     "url": "https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja/issues"
   },
   "homepage": "https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja#readme",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -70,7 +73,7 @@
     "textlint-rule-terminology": "^5.2.16"
   },
   "peerDependencies": {
-    "textlint": ">=14.0.0"
+    "textlint": ">=16.0.0"
   },
   "devDependencies": {
     "@textlint/kernel": "^16.1.3",

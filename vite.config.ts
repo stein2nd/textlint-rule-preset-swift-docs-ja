@@ -18,6 +18,7 @@ export default defineConfig({
   build: {
     outDir: "dist",
     emptyOutDir: true,
+    // 配布物の互換ターゲット。リポジトリの開発・利用下限は package.json engines (>=22.12) と別レイヤ。
     target: "node18",
     lib: {
       entry: {

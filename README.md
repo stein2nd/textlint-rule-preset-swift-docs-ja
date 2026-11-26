@@ -1,6 +1,7 @@
 # Textlint Rule Preset for Swift Docs (ja)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D22.12-3c873a.svg)](https://nodejs.org/)
 [![textlint](https://img.shields.io/badge/textlint-16.1-blue.svg)](https://textlint.org/)
 [![Vite](https://img.shields.io/badge/vite-8.3-blue.svg)](https://vite.dev)
 [![Rolldown](https://img.shields.io/badge/rolldown-1.2-blue.svg)](https://rolldown.rs/)
@@ -31,7 +32,13 @@
 
 ## 📦 Installation
 
+### 要件
+
+* Node.js **v22.12 以上** (`package.json` の `engines.node` と同じ。[Docs Linter](https://github.com/stein2nd/docs-linter) と揃えています)
+* textlint **v16 以上** (peer: `>=16`。textlint v16も Node v22.12以上を要求します)
+
 ```zsh
+node -v   # v22.12.0 以上であることを確認
 npm install --save-dev textlint-rule-preset-swift-docs-ja
 ```
 
@@ -251,7 +258,9 @@ npm run vscode:package
 
 ## 🛠️ Development
 
-### ビルド必須について
+本リポジトリの clone 後の `npm install` / ビルドも、**Node.js v22.12 以上** (`engines.node`) が必要です。GitHub Actions の npm 公開は Node **24** で実行しています。
+
+### ビルド必
 
 本リポジトリでは、**`dist/`、ルートの `index.cjs`、`chunk-*.cjs` は、Git に含めません** (Vite で都度生成します)。
 
@@ -268,11 +277,13 @@ npm run build
 
 ### Vite v8 (Rolldown) の扱い
 
-本リポジトリの本番ビルドは **Vite v8 の [Rolldown](https://rolldown.rs/)** が担当します（直接の `rollup` 依存は持ちません。`vite.config.ts` の `rollupOptions` は Vite が公開している設定名で、Rolldown にも渡されます）。
+本リポジトリの本番ビルドは **Vite v8 の [Rolldown](https://rolldown.rs/)** が担当します (直接の `rollup` 依存は持ちません。`vite.config.ts` の `rollupOptions` は Vite が公開している設定名で、Rolldown にも渡されます)。
 
-ライブラリ向け CJS では、既定の `platform` だと `import.meta.url` が誤って束ねられることがあるため、**`rollupOptions.platform: "node"`** を指定しています（`__dirname` 相当のパス解決が壊れないようにする。背景は [Vite #21974](https://github.com/vitejs/vite/issues/21974)）。
+ライブラリ向け CJS では、既定の `platform` だと `import.meta.url` が誤って束ねられることがあるため、**`rollupOptions.platform: "node"`** を指定しています (`__dirname` 相当のパス解決が壊れないようにする。背景は [Vite #21974](https://github.com/vitejs/vite/issues/21974))。
 
-CJS がコード分割されると `chunk-*.cjs` や `rolldown-runtime-*.cjs` が `dist/` に出ることがあります。`main` がルートの `index.cjs` を指すため、該当する `chunk-*.cjs` は `npm run build` でルートにコピーします（いずれも **Git 管理外・ビルドで再生成**）。
+CJS がコード分割されると `chunk-*.cjs` や `rolldown-runtime-*.cjs` が `dist/` に出ることがあります。`main` がルートの `index.cjs` を指すため、該当する `chunk-*.cjs` は `npm run build` でルートにコピーします (いずれも **Git 管理外・ビルドで再生成**)。
+
+`vite.config.ts` の `build.target` (現状 `node18`) は **配布物向けの互換ターゲット**です。開発・利用の Node 下限は **`engines.node` (>=22.12)** とは別に管理しています ([Docs Linter](https://github.com/stein2nd/docs-linter) と同様)。
 
 ### ビルド
 
@@ -285,7 +296,7 @@ npm run build
 
 | script | 用途 | 実行タイミング |
 |---|---|---|
-| `npm run build` | ライブラリ本体、補助スクリプト、VSCode 拡張を `dist/` にビルドし、ルートの `index.cjs`（必要なら `chunk-*.cjs`）を更新 | ソース変更後、clone 直後、VSCode 拡張のパッケージング前 |
+| `npm run build` | ライブラリ本体、補助スクリプト、VSCode 拡張を `dist/` にビルドし、ルートの `index.cjs` (必要なら `chunk-*.cjs`) を更新 | ソース変更後、clone 直後、VSCode 拡張のパッケージング前 |
 | `npm run dev` | `vite build --watch` でビルド結果を監視更新 | 開発中に継続実行 |
 | `npm run extract` | `glossary.md` から `dict/terminology.json` を再生成 | 用語表を更新した直後 |
 | `npm run watch` | `glossary.md` 監視 + 辞書の自動再生成 | 用語整理を続ける作業中 |
@@ -342,19 +353,21 @@ npm run vscode:package
 
 ### npm への公開 (メンテナ向け)
 
-**推奨:** タグ付き [GitHub Release](https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja/releases) を公開すると、`.github/workflows/npm-publish.yml` が **Trusted Publisher (OIDC)** で provenance 付きの `npm publish` を実行します。通常のリリース手順は commit → push → `git tag` / `git push origin vX.Y.Z` → `gh release create` です。
+**推奨:** タグ付き [GitHub Release](https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja/releases) を公開すると、`.github/workflows/npm-publish.yml` が **Trusted Publisher (OIDC)** で provenance 付きの `npm publish` を実行します (CI は Node **24**、`engines.node` の **>=22.12** を満たす)。通常のリリース手順は commit → push → `git tag` / `git push origin vX.Y.Z` → `gh release create` です。
+
+メンテナのローカル公開も **Node v22.12 以上** が必要です。
 
 **ローカルから公開する場合** (`npm run publish:npm`):
 
-1. `npm run pack` と `npm run verify:pack` を通した tarball (`artifacts/`) を使います（`publish:npm` 内でも同じ手順を実行します）。
+1. `npm run pack` と `npm run verify:pack` を通した tarball (`artifacts/`) を使います (`publish:npm` 内でも同じ手順を実行します)。
 2. 事前に `npm run publish:check-auth` でレジストリへのログインを確認できます。
 3. 認証は次のいずれかが必要です。
    * `npm login` により `~/.npmrc` にトークンを保存する
-   * 環境変数 **`NPM_TOKEN`**（または `NODE_AUTH_TOKEN`）に npm の Access Token を設定する  
+   * 環境変数 **`NPM_TOKEN`** (または `NODE_AUTH_TOKEN`) に npm の Access Token を設定する  
      例: `NPM_TOKEN=… npm run publish:npm`
 4. Cursor や CI のサンドボックスでは `NPM_CONFIG_CACHE` などが隔離され、403/404 で失敗することがあります。そのときは **macOS のターミナル** で同じコマンドを実行するか、上記の **Release 経由** を使ってください。
 
-ローカル公開では provenance は付きません（`NPM_CONFIG_PROVENANCE=false`）。`publish:npm` は、同じバージョンが既に npm にある場合は公開をスキップします。
+ローカル公開では provenance は付きません (`NPM_CONFIG_PROVENANCE=false`)。`publish:npm` は、同じバージョンが既に npm にある場合は公開をスキップします。
 
 ### プロジェクト構成
 
@@ -370,6 +383,8 @@ npm run vscode:package
 ## Contributing
 
 貢献をお待ちしています。以下の手順に従ってください。
+
+**前提:** Node.js **v22.12 以上** (`package.json` の `engines.node`)、textlint **v16 以上**。
 
 1. リポジトリをフォークしてください。
 2. 機能ブランチを作成してください (`git checkout -b feature/amazing-feature`)。

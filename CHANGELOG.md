@@ -2,10 +2,17 @@
 
 ## Unreleased
 
+## v1.0.20: 2026-11-26
+
+* `engines.node` を `>=22.12.0` に明示し、インストール・開発要件を [Docs Linter](https://github.com/stein2nd/docs-linter) と揃えた
+* `peerDependencies.textlint` を `>=16.0.0` に更新 (Node v22.12要件と整合)
+* README に Node バッジ、Contributing / npm 公開の前提、`build.target` と `engines` の関係を追記
+* `vite.config.ts` と npm publish ワークフローに、`build.target` (配布物) と `engines` (実行環境) のコメントを追加
+
 ## v1.0.19: 2026-11-26
 
 * 直接の `rollup` devDependency と `overrides` を削除し、README バッジを Rolldown に更新 ([#4](https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja/issues/4))
-* README の「Vite v8 (Rolldown) の扱い」を現行ビルド（Rolldown、チャンクコピー）に合わせて整理
+* README の「Vite v8 (Rolldown) の扱い」を現行ビルド (Rolldown、チャンクコピー) に合わせて整理
 * `tsconfig.json` に `rootDir: "src"` を明示し、TypeScript v7での `outDir` レイアウト警告を解消
 
 ## v1.0.18: 2026-11-26
@@ -89,20 +96,20 @@
 ## v1.0.2: 2026-06-09
 
 * GitHub Actions の npm publish で Trusted Publisher (OIDC) 認証が正しく使われるよう修正
-* CI の Node.js を24に更新（Trusted Publisher 要件）
+* CI の Node.js を24に更新 (Trusted Publisher 要件)
 * `setup-node` が書く空の `_authToken` を除去し、OIDC 認証を有効化
 * CI の publish 手順をパッケージルートからの `npm publish` に変更
 * ビルド時に `src/vscode/package.json` のバージョンをルート `package.json` に同期
 
 ## v1.0.1: 2026-06-09
 
-* npm 公開向けに `pack` / `verify:pack` / `publish:npm` スクリプトを追加（tarball は `artifacts/`、検証は `.sandbox/`）
-* GitHub Actions による npm publish ワークフローを追加（Trusted Publisher / OIDC 対応）
+* npm 公開向けに `pack` / `verify:pack` / `publish:npm` スクリプトを追加 (tarball は `artifacts/`、検証は `.sandbox/`)
+* GitHub Actions による npm publish ワークフローを追加 (Trusted Publisher / OIDC 対応)
 * `peerDependencies` に `textlint` を追加
 
 ## v1.0.0: 2026-06-09
 
-* 初の安定版リリース（`0.0.10` → `1.0.0`）
+* 初の安定版リリース (`0.0.10` → `1.0.0`)
 * ライセンスを GPL-2.0-or-later から GPL-3.0-or-later に更新
 * VS Code 拡張のバージョンを `1.0.0` に揃え
 * ビルド基盤を Vite v8に移行
