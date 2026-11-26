@@ -3,7 +3,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![textlint](https://img.shields.io/badge/textlint-16.1-blue.svg)](https://textlint.org/)
 [![Vite](https://img.shields.io/badge/vite-8.3-blue.svg)](https://vite.dev)
-[![Rollup](https://img.shields.io/badge/rollup-4.68-blue.svg)](https://rollupjs.org)
+[![Rolldown](https://img.shields.io/badge/rolldown-1.2-blue.svg)](https://rolldown.rs/)
 
 ## 📝 Description
 
@@ -69,7 +69,7 @@ npx textlint --fix docs/**/*.md
 
 プリセット内の特定のルールに対して、個別に設定を上書きすることができます。以下の2つの方法があります。
 
-#### 方法1: preset内でルールを個別に設定する
+#### 方法1: preset 内でルールを個別に設定する
 
 プリセット名の下にルール名をネストして設定する方法です。この方法では、`swift-docs-ja/prh` を `false` に設定して重複起動を防ぐ必要があります：
 
@@ -195,7 +195,7 @@ rules:
 
 #### 矛盾時の処理
 
-両方の辞書で同じ用語が定義されている場合、**PRH ルールが優先**されます。
+両方の辞書で同じ用語が定義されている場合、**PRH ルールが優先** されます。
 
 **例：矛盾する定義**
 - `prh-rules/swift.yml`: `プロトコル` (正しい)
@@ -266,11 +266,13 @@ npm run build
 
 **npm レジストリから `npm install` する利用者** には影響しません。`npm pack` / `npm publish` 時に `prepack` で `build` が走り、`package.json` の `files` に従って tarball に入ります。
 
-### Vite 8 (Rolldown) の扱い
+### Vite v8 (Rolldown) の扱い
 
-ビルドは、Vite v8 の [Rolldown](https://rolldown.rs/) 基盤です。ライブラリ向け CJS では、既定の `platform` だと `import.meta.url` が誤って束ねられることがあるため、本リポジトリの `vite.config.ts` では **`rollupOptions.platform: "node"`** を指定しています (`__dirname` 相当のパス解決が壊れないようにするため。背景は [Vite #21974](https://github.com/vitejs/vite/issues/21974) などを参照)。
+本リポジトリの本番ビルドは **Vite v8 の [Rolldown](https://rolldown.rs/)** が担当します（直接の `rollup` 依存は持ちません。`vite.config.ts` の `rollupOptions` は Vite が公開している設定名で、Rolldown にも渡されます）。
 
-CJS 出力がコード分割されると、**`./chunk-*.cjs`** が増えます。`package.json` の `main` がルートの `index.cjs` を指す関係で、`npm run build` 内で `dist/` からルートに同名チャンクもコピーします。チャンクのハッシュはビルドごとに変わり得るため、**成果物を Git で追うのではなく、常にビルドで揃える** 運用にしています。
+ライブラリ向け CJS では、既定の `platform` だと `import.meta.url` が誤って束ねられることがあるため、**`rollupOptions.platform: "node"`** を指定しています（`__dirname` 相当のパス解決が壊れないようにする。背景は [Vite #21974](https://github.com/vitejs/vite/issues/21974)）。
+
+CJS がコード分割されると `chunk-*.cjs` や `rolldown-runtime-*.cjs` が `dist/` に出ることがあります。`main` がルートの `index.cjs` を指すため、該当する `chunk-*.cjs` は `npm run build` でルートにコピーします（いずれも **Git 管理外・ビルドで再生成**）。
 
 ### ビルド
 
@@ -283,7 +285,7 @@ npm run build
 
 | script | 用途 | 実行タイミング |
 |---|---|---|
-| `npm run build` | ライブラリ本体、補助スクリプト、VSCode 拡張を `dist/` にビルドし、ルートの `index.cjs` と CJS 用 `chunk-*.cjs` を更新 | ソース変更後、clone 直後、VSCode 拡張のパッケージング前 |
+| `npm run build` | ライブラリ本体、補助スクリプト、VSCode 拡張を `dist/` にビルドし、ルートの `index.cjs`（必要なら `chunk-*.cjs`）を更新 | ソース変更後、clone 直後、VSCode 拡張のパッケージング前 |
 | `npm run dev` | `vite build --watch` でビルド結果を監視更新 | 開発中に継続実行 |
 | `npm run extract` | `glossary.md` から `dict/terminology.json` を再生成 | 用語表を更新した直後 |
 | `npm run watch` | `glossary.md` 監視 + 辞書の自動再生成 | 用語整理を続ける作業中 |
@@ -350,7 +352,7 @@ npm run vscode:package
    * `npm login` により `~/.npmrc` にトークンを保存する
    * 環境変数 **`NPM_TOKEN`**（または `NODE_AUTH_TOKEN`）に npm の Access Token を設定する  
      例: `NPM_TOKEN=… npm run publish:npm`
-4. Cursor や CI のサンドボックスでは `NPM_CONFIG_CACHE` などが隔離され、403/404 で失敗することがあります。そのときは **macOS のターミナル**で同じコマンドを実行するか、上記の **Release 経由**を使ってください。
+4. Cursor や CI のサンドボックスでは `NPM_CONFIG_CACHE` などが隔離され、403/404 で失敗することがあります。そのときは **macOS のターミナル** で同じコマンドを実行するか、上記の **Release 経由** を使ってください。
 
 ローカル公開では provenance は付きません（`NPM_CONFIG_PROVENANCE=false`）。`publish:npm` は、同じバージョンが既に npm にある場合は公開をスキップします。
 

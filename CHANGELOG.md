@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v1.0.19: 2026-11-26
+
+* 直接の `rollup` devDependency と `overrides` を削除し、README バッジを Rolldown に更新 ([#4](https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja/issues/4))
+* README の「Vite v8 (Rolldown) の扱い」を現行ビルド（Rolldown、チャンクコピー）に合わせて整理
+* `tsconfig.json` に `rootDir: "src"` を明示し、TypeScript v7での `outDir` レイアウト警告を解消
+
 ## v1.0.18: 2026-11-26
 
 * `publish:npm` 前に npm 認証を検証し、`NPM_TOKEN` / サンドボックス用 npm 環境変数に対応
