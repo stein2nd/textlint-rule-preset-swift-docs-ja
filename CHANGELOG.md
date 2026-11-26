@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## v1.0.18: 2026-11-26
+
+* `publish:npm` 前に npm 認証を検証し、`NPM_TOKEN` / サンドボックス用 npm 環境変数に対応
+* `npm run publish:check-auth` を追加
+
 ## v1.0.17: 2026-11-26
 
 * npm プリセットが `require` / `import` のどちらでも読み込めるよう、ビルド時に textlint ルールをバンドルせず `dependencies` として配布するよう変更 ([#8](https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja/issues/8))

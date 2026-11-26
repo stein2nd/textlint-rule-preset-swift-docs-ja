@@ -338,6 +338,22 @@ npm run vscode:package
 
 公開時 (`npm pack` / `npm publish`) は `prepack` が自動で `npm run build` を実行するため、公開 tarball に必要なファイルが揃います。
 
+### npm への公開 (メンテナ向け)
+
+**推奨:** タグ付き [GitHub Release](https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja/releases) を公開すると、`.github/workflows/npm-publish.yml` が **Trusted Publisher (OIDC)** で provenance 付きの `npm publish` を実行します。通常のリリース手順は commit → push → `git tag` / `git push origin vX.Y.Z` → `gh release create` です。
+
+**ローカルから公開する場合** (`npm run publish:npm`):
+
+1. `npm run pack` と `npm run verify:pack` を通した tarball (`artifacts/`) を使います（`publish:npm` 内でも同じ手順を実行します）。
+2. 事前に `npm run publish:check-auth` でレジストリへのログインを確認できます。
+3. 認証は次のいずれかが必要です。
+   * `npm login` により `~/.npmrc` にトークンを保存する
+   * 環境変数 **`NPM_TOKEN`**（または `NODE_AUTH_TOKEN`）に npm の Access Token を設定する  
+     例: `NPM_TOKEN=… npm run publish:npm`
+4. Cursor や CI のサンドボックスでは `NPM_CONFIG_CACHE` などが隔離され、403/404 で失敗することがあります。そのときは **macOS のターミナル**で同じコマンドを実行するか、上記の **Release 経由**を使ってください。
+
+ローカル公開では provenance は付きません（`NPM_CONFIG_PROVENANCE=false`）。`publish:npm` は、同じバージョンが既に npm にある場合は公開をスキップします。
+
 ### プロジェクト構成
 
 | ディレクトリ | 説明 |

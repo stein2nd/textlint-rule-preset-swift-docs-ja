@@ -1,6 +1,6 @@
 {
   "name": "textlint-rule-preset-swift-docs-ja",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Swift 日本語ドキュメント向けの textlint ルールプリセット",
   "type": "module",
   "author": "Koutarou ISHIKAWA",
@@ -32,6 +32,7 @@
     "prepack": "npm run build",
     "pack": "node scripts/pack-to-artifacts.mjs",
     "verify:pack": "node scripts/verify-pack.mjs",
+    "publish:check-auth": "node scripts/assert-npm-auth.mjs",
     "publish:npm": "node scripts/publish-to-npm.mjs",
     "vscode:package": "cd dist/vscode && npm install --production && npx vsce package"
   },
