@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## v1.0.17: 2026-11-26
+
+* npm プリセットが `require` / `import` のどちらでも読み込めるよう、ビルド時に textlint ルールをバンドルせず `dependencies` として配布するよう変更 ([#8](https://github.com/stein2nd/textlint-rule-preset-swift-docs-ja/issues/8))
+* `verify:pack` で tarball インストール後の `require` / `import` スモークテストを追加
+
 ## v1.0.16: 2026-11-26
 
 * 利用 npm モジュールを最新化 (textlint v16.1.3、Rollup v4.68.8、@types/node v26.6.10、textlint-rule-preset-ja-technical-writing v12.1.0など)

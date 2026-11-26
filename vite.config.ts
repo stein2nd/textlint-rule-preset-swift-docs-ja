@@ -5,6 +5,15 @@ import { copyFileSync, mkdirSync, cpSync, existsSync } from "fs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+const nodeBuiltins = new Set([
+  "fs", "path", "child_process", "url",
+  "assert", "os", "module", "node:fs", "node:path", "node:url", "node:module"
+]);
+
+function isBareModuleImport(id: string): boolean {
+  return !id.startsWith(".") && !id.startsWith("/") && !id.startsWith("\0");
+}
+
 export default defineConfig({
   build: {
     outDir: "dist",
@@ -24,23 +33,17 @@ export default defineConfig({
       // @see https://github.com/vitejs/vite/issues/21974
       platform: "node",
       external: (id) => {
-        // VSCode拡張機能のビルドでは、vscode と Node.js の組み込みモジュールを外部化
         if (id === "vscode" || id.startsWith("node:")) {
           return true;
         }
-        // 組み込みモジュールを外部化 (Node 向けビルドのため、明示指定でログを抑止)
-        const builtins = [
-          "fs", "path", "child_process", "url",
-          "assert", "os"  // 依存パッケージが参照する Node 組み込み
-        ];
-        if (builtins.includes(id)) {
+        if (nodeBuiltins.has(id)) {
           return true;
         }
-        // vscode/extension のビルドでは js-yaml を外部化（node_modules に含める）
         if (id === "js-yaml" || id.startsWith("js-yaml/")) {
           return true;
         }
-        return false;
+        // kuromoji 経由の zlibjs はバンドルすると strict 下で this が壊れるため外部依存のままにする
+        return isBareModuleImport(id);
       }
     }
   },

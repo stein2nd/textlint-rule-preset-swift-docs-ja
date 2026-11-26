@@ -26,9 +26,50 @@ const requiredTarballEntries = [
 
 const requiredInstalledPaths = [
   "index.cjs",
+  "dist/index.js",
   "dict/terminology.json",
   "prh-rules/swift.yml"
 ];
+
+function assertPresetLoadsFromSandbox(packageName) {
+  const requireScriptPath = resolve(verifyDir, "load-require.cjs");
+  const importScriptPath = resolve(verifyDir, "load-import.mjs");
+
+  writeFileSync(
+    requireScriptPath,
+    [
+      `"use strict";`,
+      `const preset = require(${JSON.stringify(packageName)});`,
+      "if (!preset.rules || Object.keys(preset.rules).length < 10) {",
+      "  console.error('Preset rules missing or incomplete');",
+      "  process.exit(1);",
+      "}",
+      'console.log("require ok (" + Object.keys(preset.rules).length + " rules)");',
+      ""
+    ].join("\n")
+  );
+
+  writeFileSync(
+    importScriptPath,
+    [
+      `import(${JSON.stringify(packageName)}).then((mod) => {`,
+      "  const preset = mod.default ?? mod;",
+      "  if (!preset.rules || Object.keys(preset.rules).length < 10) {",
+      "    console.error('Preset rules missing or incomplete (ESM)');",
+      "    process.exit(1);",
+      "  }",
+      '  console.log("import ok (" + Object.keys(preset.rules).length + " rules)");',
+      "}, (err) => {",
+      "  console.error(err);",
+      "  process.exit(1);",
+      "});",
+      ""
+    ].join("\n")
+  );
+
+  execSync(`node "${requireScriptPath}"`, { cwd: verifyDir, stdio: "inherit" });
+  execSync(`node "${importScriptPath}"`, { cwd: verifyDir, stdio: "inherit" });
+}
 
 function main() {
   if (!existsSync(tarball)) {
@@ -93,6 +134,9 @@ function main() {
     }
     process.exit(1);
   }
+
+  console.log("🔍 Loading preset via require and import ...");
+  assertPresetLoadsFromSandbox(pkg.name);
 
   const summary = {
     verifiedAt: new Date().toISOString(),
