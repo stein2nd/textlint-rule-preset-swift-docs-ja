@@ -1,7 +1,7 @@
 # Textlint Rule Preset for Swift Docs (ja)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![textlint](https://img.shields.io/badge/textlint-15.8-blue.svg)](https://textlint.org/)
+[![textlint](https://img.shields.io/badge/textlint-16.1-blue.svg)](https://textlint.org/)
 [![Vite](https://img.shields.io/badge/vite-8.3-blue.svg)](https://vite.dev)
 [![Rollup](https://img.shields.io/badge/rollup-4.68-blue.svg)](https://rollupjs.org)
 
@@ -270,7 +270,7 @@ npm run build
 
 ビルドは、Vite v8 の [Rolldown](https://rolldown.rs/) 基盤です。ライブラリ向け CJS では、既定の `platform` だと `import.meta.url` が誤って束ねられることがあるため、本リポジトリの `vite.config.ts` では **`rollupOptions.platform: "node"`** を指定しています (`__dirname` 相当のパス解決が壊れないようにするため。背景は [Vite #21974](https://github.com/vitejs/vite/issues/21974) などを参照)。
 
-CJS 出力がコード分割されると、**`./chunk-*.cjs`** が増えます。`package.json` の `main` がルートの `index.cjs` を指す関係で、`npm run build` 内で `dist/` からルートへ同名チャンクもコピーします。チャンクのハッシュはビルドごとに変わり得るため、**成果物を Git で追うのではなく、常にビルドで揃える** 運用にしています。
+CJS 出力がコード分割されると、**`./chunk-*.cjs`** が増えます。`package.json` の `main` がルートの `index.cjs` を指す関係で、`npm run build` 内で `dist/` からルートに同名チャンクもコピーします。チャンクのハッシュはビルドごとに変わり得るため、**成果物を Git で追うのではなく、常にビルドで揃える** 運用にしています。
 
 ### ビルド
 

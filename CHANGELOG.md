@@ -2,9 +2,14 @@
 
 ## Unreleased
 
+## v1.0.16: 2026-11-26
+
+* 利用 npm モジュールを最新化 (textlint v16.1.3、Rollup v4.68.8、@types/node v26.6.10、textlint-rule-preset-ja-technical-writing v12.1.0など)
+* README のバッジを更新
+
 ## v1.0.15: 2026-11-20
 
-* npm publish ワークフローの Actions を v7 系へ更新し、Node.js v20非推奨の Annotation を解消
+* npm publish ワークフローの Actions を v7系に更新し、Node.js v20非推奨の Annotation を解消
 
 ## v1.0.14: 2026-11-20
 
@@ -61,8 +66,8 @@
 
 ## v1.0.3: 2026-07-23
 
-* 利用 npm モジュールを最新化 (TypeScript v7、Vite v8.1、Rollup v4.62、js-yaml v5 など)
-* textlint v15.7 系へ更新
+* 利用 npm モジュールを最新化 (TypeScript v7、Vite v8.1、Rollup v4.62、js-yaml v5など)
+* textlint v15.7系に更新
 * README のバッジを更新
 
 ## v1.0.2: 2026-06-09
@@ -71,7 +76,7 @@
 * CI の Node.js を24に更新（Trusted Publisher 要件）
 * `setup-node` が書く空の `_authToken` を除去し、OIDC 認証を有効化
 * CI の publish 手順をパッケージルートからの `npm publish` に変更
-* ビルド時に `src/vscode/package.json` のバージョンをルート `package.json` へ同期
+* ビルド時に `src/vscode/package.json` のバージョンをルート `package.json` に同期
 
 ## v1.0.1: 2026-06-09
 
@@ -85,5 +90,5 @@
 * ライセンスを GPL-2.0-or-later から GPL-3.0-or-later に更新
 * VS Code 拡張のバージョンを `1.0.0` に揃え
 * ビルド基盤を Vite v8に移行
-* CJS チャンクをルートへコピーする `copy-root-cjs-chunks.mjs` を追加
+* CJS チャンクをルートにコピーする `copy-root-cjs-chunks.mjs` を追加
 * 依存 npm モジュールを最新化
